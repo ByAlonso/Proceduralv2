@@ -21,7 +21,7 @@ def perlin_array(array,shape = (200, 200),
         seed = np.random.randint(0, 100)
     arr = array
     for i in range(array.shape[0]):
-        for j in range(array.shape[1]):
+        for j in range(array.shape[1]) :
             arr[i][j] = noise.pnoise2(i / scale,
                                       j / scale,
                                       octaves=octaves,
@@ -74,12 +74,10 @@ def principal_thread(x):
 
 if __name__ == '__main__':
     pool = Pool(processes = 4)
-
     array_list = pool.map(principal_thread,range(1,7))
     result = array_list[0]
     for x in range(1,len(array_list) - 1):
         result = np.add(result,array_list[x])
-
     aux = perlin_array(result)
     x = np.arange(0, 200, 1)
     y = np.arange(0, 200, 1)
